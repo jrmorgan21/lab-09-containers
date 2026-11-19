@@ -1,0 +1,17 @@
+# Python virtual environment and caches
+.venv/
+**/__pycache__/
+
+# Repo history
+.git/
+
+# Credentials and keys
+.env
+.aws/
+*.pem
+
+# Lab outputs
+results/
+
+# Downloaded books
+*.txt

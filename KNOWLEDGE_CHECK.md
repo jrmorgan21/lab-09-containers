@@ -8,7 +8,7 @@ Assume you want to share your image with others and make it publicly available o
 
 **Your answer:** Give two reasons why this is a bad idea. Think of who could then read your credentials, and of what happens when your Learner Lab session ends.
 
-...
+This addition to the Dockerfile is a bad idea first of all because if you add .aws to the Dockerfile and are making it public, anyone can go into the Github Container Registry and read your AWS credentials, which means they could get into your account for as long as the credentials are valid. Besides being a security risk, it would be impractical, because you would have to change .aws/credentials inside the Dockerfile every time your Learner Lab session expires for access to AWS to work.
 
 ## 2. Where did the Atlas password come from?
 
@@ -18,7 +18,7 @@ In Step 4, you ran the analysis once with `-v ~/.aws:/home/app/.aws:ro` only, wi
 
 **Your answer:** Explain, step by step, where the container found the Atlas settings in that run.
 
-...
+The container first checks if it can find the atlas settings, but they are not found because we didn't specify them when running the container. Since the container doesn't find the atlas settings, it tries to load the credentials from the SSM parameter, which is set in AWS.
 
 ## 3. Same tag, different image
 
@@ -26,4 +26,6 @@ Run `docker images book-analysis`, and note the image ID of `book-analysis:0.1.0
 
 **Your answer:** Paste the image ID from before and after the rebuild. Why is it a problem for someone who uses your image that `0.1.0` now names a different image, and what should you have done instead?
 
-...
+Image ID before: b719082bfbea
+
+Image ID after: e8782d067ec6
